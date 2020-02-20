@@ -1,2 +1,2 @@
 # ubiquitous-eureka
-video game
+ok
