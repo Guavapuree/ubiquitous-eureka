@@ -1,0 +1,224 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/keikotesting/Walk/tile005.png" type="Texture" id=3]
+[ext_resource path="res://assets/keikotesting/Walk/tile006.png" type="Texture" id=4]
+[ext_resource path="res://assets/keikotesting/Walk/tile007.png" type="Texture" id=5]
+[ext_resource path="res://assets/keikotesting/Walk/tile000.png" type="Texture" id=6]
+[ext_resource path="res://assets/keikotesting/Walk/tile002.png" type="Texture" id=7]
+[ext_resource path="res://assets/keikotesting/Walk/tile003.png" type="Texture" id=8]
+[ext_resource path="res://assets/keikotesting/Walk/tile004.png" type="Texture" id=9]
+[ext_resource path="res://assets/keikotesting/Fall/Fall.png" type="Texture" id=10]
+[ext_resource path="res://assets/keikotesting/Jump/Jump.png" type="Texture" id=11]
+[ext_resource path="res://assets/keikotesting/BaseBallAttack/Bat2.png" type="Texture" id=12]
+[ext_resource path="res://assets/keikotesting/BaseBallAttack/Bat1.png" type="Texture" id=13]
+[ext_resource path="res://assets/keikotesting/BaseBallAttack/Bat3.png" type="Texture" id=14]
+[ext_resource path="res://assets/keikotesting/IdleLeft.png" type="Texture" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 41 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Attack"
+length = 0.25
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Fall"
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Jump"
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Walk"
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 15 ), ExtResource( 15 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 45.6478, 41.7715 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 52.2752, 10.7155 )
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Fall"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachine" id=14]
+states/Attack/node = SubResource( 9 )
+states/Attack/position = Vector2( 451, 160 )
+states/Fall/node = SubResource( 10 )
+states/Fall/position = Vector2( 129, 21 )
+states/Jump/node = SubResource( 11 )
+states/Jump/position = Vector2( 289, -34 )
+states/Walk/node = SubResource( 12 )
+states/Walk/position = Vector2( 242, 118 )
+states/idle/node = SubResource( 13 )
+states/idle/position = Vector2( 533, 13 )
+transitions = [ "idle", "Attack", SubResource( 16 ), "Attack", "idle", SubResource( 17 ), "idle", "Walk", SubResource( 18 ), "Walk", "idle", SubResource( 19 ), "Walk", "Attack", SubResource( 20 ), "idle", "Jump", SubResource( 21 ), "Walk", "Jump", SubResource( 22 ), "Jump", "Fall", SubResource( 23 ), "Fall", "Walk", SubResource( 24 ), "Fall", "idle", SubResource( 25 ) ]
+start_node = "idle"
+graph_offset = Vector2( -96.4266, -57 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+collision_mask = 4
+script = ExtResource( 1 )
+speed = Vector2( 700, 1350 )
+stomp_impulse = 1600.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+process_mode = 0
+limit_left = 0
+limit_bottom = 1080
+limit_smoothed = true
+smoothing_enabled = true
+drag_margin_left = 0.0
+drag_margin_right = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -43.333 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -41 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 8 )
+anims/Fall = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/Walk = SubResource( 5 )
+anims/idle = SubResource( 2 )
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+modulate = Color( 0.337255, 0.223529, 1, 1 )
+position = Vector2( 0, -48 )
+shape = SubResource( 3 )
+
+[node name="StompDetector" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
+modulate = Color( 0.337255, 0.223529, 1, 1 )
+shape = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 14 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 15 )
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
+[connection signal="area_entered" from="StompDetector" to="." method="_on_StompDetector_area_entered"]
