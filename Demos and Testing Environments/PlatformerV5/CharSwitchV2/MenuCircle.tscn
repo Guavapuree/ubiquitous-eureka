@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MenuCircle.gd" type="Script" id=1]
+[ext_resource path="res://baka.png" type="Texture" id=2]
+
+[node name="MenuCircle" type="Container"]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 30.0
+margin_bottom = 30.0
+text = "1"
+
+[node name="Sprite" type="Sprite" parent="Button"]
+z_index = 100
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button2" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 30.0
+margin_bottom = 30.0
+text = "2"
+
+[node name="Sprite" type="Sprite" parent="Button2"]
+z_index = 100
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button3" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 30.0
+margin_bottom = 30.0
+text = "3"
+
+[node name="Sprite" type="Sprite" parent="Button3"]
+z_index = 100
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button4" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 30.0
+margin_bottom = 30.0
+text = "4"
+
+[node name="Sprite" type="Sprite" parent="Button4"]
+z_index = 100
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button5" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 30.0
+margin_bottom = 30.0
+text = "5"
+
+[node name="Sprite" type="Sprite" parent="Button5"]
+z_index = 100
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button6" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 30.0
+margin_bottom = 30.0
+text = "6"
+
+[node name="Sprite" type="Sprite" parent="Button6"]
+z_index = 100
+texture = ExtResource( 2 )
+centered = false
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_Button6_pressed"]

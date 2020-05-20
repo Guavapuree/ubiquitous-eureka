@@ -1,0 +1,186 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Characters/Player.gd" type="Script" id=1]
+[ext_resource path="res://Box.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Character1 Sprites/Fall/Fall.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile000.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile001.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile002.png" type="Texture" id=6]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile003.png" type="Texture" id=7]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile004.png" type="Texture" id=8]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile005.png" type="Texture" id=9]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile006.png" type="Texture" id=10]
+[ext_resource path="res://Characters/Character1 Sprites/Walk/tile007.png" type="Texture" id=11]
+[ext_resource path="res://Character1.png" type="Texture" id=12]
+[ext_resource path="res://Characters/Character1 Sprites/Jump/Jump.png" type="Texture" id=13]
+[ext_resource path="res://Characters/Character1 Sprites/BaseBallAttack/Bat1.png" type="Texture" id=14]
+[ext_resource path="res://Characters/Character1 Sprites/BaseBallAttack/Bat2.png" type="Texture" id=15]
+[ext_resource path="res://Characters/Character1 Sprites/BaseBallAttack/Bat3.png" type="Texture" id=16]
+[ext_resource path="res://CharacterMenuController.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Characters/Area2D.gd" type="Script" id=18]
+[ext_resource path="res://Characters/Character1 Sprites/HitboxSquare.png" type="Texture" id=19]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "BaseBallAttack",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 14 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2, 8 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "BaseBallHitLeft"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.33 ),
+"transitions": PoolRealArray( 1, -2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, -5 ), Vector2( 8, -6 ), Vector2( 4, -3 ), Vector2( -15, -0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.33 ),
+"transitions": PoolRealArray( 1, -2, 1, 1 ),
+"update": 0,
+"values": [ 15.0, 15.0, 74.9999, 90.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "BaseBallHitRight"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.33 ),
+"transitions": PoolRealArray( 1, -2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -7, -5 ), Vector2( -8, -6 ), Vector2( -4, -3 ), Vector2( 15, -0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.33 ),
+"transitions": PoolRealArray( 1, -2, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -15.0, -75.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="Character1" type="KinematicBody2D"]
+collision/safe_margin = 0.05
+script = ExtResource( 1 )
+
+[node name="CharacterHitbox" type="Sprite" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2( 0, 1 )
+scale = Vector2( 0.277778, 0.777778 )
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "BaseBallAttack"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+
+[node name="CharacterMenu" parent="." instance=ExtResource( 17 )]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -15, -0.5 )
+rotation = 1.5708
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="Area2D/CollisionShape2D"]
+visible = false
+modulate = Color( 0, 0.6, 1, 1 )
+scale = Vector2( 1, 4 )
+texture = ExtResource( 19 )
+
+[node name="BaseBallBatHitBox" type="AnimationPlayer" parent="Area2D"]
+anims/BaseBallHitLeft = SubResource( 4 )
+anims/BaseBallHitRight = SubResource( 5 )
+anims/Default = SubResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
