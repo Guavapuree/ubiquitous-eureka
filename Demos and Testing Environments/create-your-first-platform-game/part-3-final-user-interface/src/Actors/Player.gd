@@ -2,10 +2,8 @@ extends Actor
 
 
 export var stomp_impulse: = 600.0
-var state_machine
 
-func _ready():
-	state_machine = $AnimationTree.get("parameters/playback")
+
 func _on_StompDetector_area_entered(area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
 
@@ -24,12 +22,12 @@ func _physics_process(delta: float) -> void:
 	)
 	if _velocity.x > 0.0:
 		$Sprite.scale.x = -3
-		state_machine.travel("Walk")
+		$AnimationPlayer.play("Running")
 	elif _velocity.x < 0.0:
 		$Sprite.scale.x = 3
-		state_machine.travel("Walk")
+		$AnimationPlayer.play("Running")
 	else:
-		state_machine.travel("Idle")
+		$AnimationPlayer.stop()
 
 
 
