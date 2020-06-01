@@ -8,15 +8,28 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://src/Actors/Actor.gd"
+} ]
 _global_script_class_icons={
-
+"Actor": ""
 }
 
 [application]
 
 config/name="Cunquest"
+run/main_scene="res://src/Actors/Player Characters/Keiko.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=320
+window/size/height=240
+window/size/fullscreen=true
+window/stretch/mode="2d"
 
 [rendering]
 
