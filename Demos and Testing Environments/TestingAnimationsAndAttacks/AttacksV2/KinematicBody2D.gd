@@ -20,10 +20,15 @@ var smooth_attack_speed = 20
 var target_attack_speed = 0
 const ATTACK_TRAVEL_SPEED = 2
 
+
+
 var moving = false
 var can_crouch = true
 var can_roll = true
 var airborn = false
+
+var ground_friction_slide = 0.2
+var air_friction_slide = 0.05
 
 var velocity = Vector2()
 
@@ -38,7 +43,7 @@ func _ready():
 func _process(delta):
 	velocity.y += gravity
 	var friction = false
-	print(velocity.x)
+#	print(velocity.x)
 #	print(velocity.y)
 #	print($DelayTillRoll.get_time_left())
 #	print($AnimatedSprite.get_frame())
@@ -49,7 +54,6 @@ func _process(delta):
 #	print(allow_movement)
 #	print(can_roll)
 #	print($Sprite.flip_h)
-	
 	if $AnimatedSprite.get_frame() == 5:
 		$AnimatedSprite.play("Nothing")
 ### DETERMINE DIRECTION ###
@@ -111,11 +115,13 @@ func _process(delta):
 			
 ### RUN ###
 		elif Input.is_action_pressed("ui_d"):
+			direction = "Right"
 			moving = true
 			animation_state.travel("2Run")
 			velocity.x = min(velocity.x + acceleration, max_run_speed)
 			$Sprite.flip_h = true
 		elif Input.is_action_pressed("ui_a"):
+			direction = "Left"
 			moving = true
 			animation_state.travel("2Run")
 			velocity.x = max(velocity.x - acceleration, -max_run_speed)
@@ -135,15 +141,19 @@ func _process(delta):
 			animation_state.travel("4Fall")
 	if is_on_floor():
 		airborn = false
-		if Input.is_action_just_pressed("ui_select") and allow_movement == true:
+		if Input.is_action_just_pressed("ui_space") and allow_movement == true:
 			airborn = true
 			velocity.y = jump_height
+### ON-GROUND FRICTION ###
 		if friction == true:
-			velocity.x = lerp(velocity.x, 0, 0.2)
+			velocity.x = lerp(velocity.x, 0, ground_friction_slide)
+### IN-AIR FRICTION ###
 	else:
 		if friction == true:
-			velocity.x = lerp(velocity.x, 0, 0.05)
+			velocity.x = lerp(velocity.x, 0, air_friction_slide)
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+### TIMERS ###
 
 func _on_AttackTime_timeout():
 	slow_down = false
