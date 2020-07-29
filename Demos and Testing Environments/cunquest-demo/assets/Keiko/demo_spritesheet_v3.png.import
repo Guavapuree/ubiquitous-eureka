@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/full_demo_spritesheet.png-1528122d596296acd6177f295e470a02.stex"
+path="res://.import/demo_spritesheet_v3.png-b320dc9e3158de3900fafc89f486de88.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Keiko/full_demo_spritesheet.png"
-dest_files=[ "res://.import/full_demo_spritesheet.png-1528122d596296acd6177f295e470a02.stex" ]
+source_file="res://assets/Keiko/demo_spritesheet_v3.png"
+dest_files=[ "res://.import/demo_spritesheet_v3.png-b320dc9e3158de3900fafc89f486de88.stex" ]
 
 [params]
 

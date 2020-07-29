@@ -9,6 +9,7 @@ extents = Vector2( 32, 32 )
 [node name="World" type="Node"]
 
 [node name="Keiko" parent="." instance=ExtResource( 2 )]
+position = Vector2( 169, 62 )
 
 [node name="Walls" type="Node" parent="."]
 
