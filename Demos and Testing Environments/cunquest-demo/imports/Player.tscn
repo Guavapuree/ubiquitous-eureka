@@ -42,7 +42,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25 ),
+"times": PoolRealArray( 0, 0.166667, 2.75, 7.16667 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 0, 0, 0 ]
@@ -324,7 +324,6 @@ offset = Vector2( 14, 17 )
 [node name="Sprite" type="Sprite" parent="."]
 vframes = 9
 hframes = 8
-frame = 65
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
